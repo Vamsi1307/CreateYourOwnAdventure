@@ -1,0 +1,9 @@
+version: "1"
+services: 
+  createyourownadventure: 
+    build: "."
+    ports: 
+      - "7088:80"
+      - "7089:443"
+    volumes:
+      - ./Images:/app/Images:rw
