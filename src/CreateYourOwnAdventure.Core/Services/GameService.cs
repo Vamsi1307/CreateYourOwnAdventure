@@ -18,7 +18,7 @@ public class GameService: IGameService
 		_gameRepository = gameRepository;
 	}
 	
-	public async Task<List<GameResponse>?> Get(int gameId)
+	public async Task<GameTraverse?> Get(int gameId)
 	{
 		Game? game = await _gameRepository.Get(gameId);
 
@@ -30,7 +30,10 @@ public class GameService: IGameService
 
 		List<GameResponse> path = _binaryTreeService.Get(tree, game.Steps);
 
-		return path;
+		return new GameTraverse() { 
+			GameId = gameId,
+			Choices = path
+		};
 	}
 
 	public async Task<List<Game?>> Get()

@@ -13,9 +13,11 @@
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.7" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.7" />
     <PackageReference Include="coverlet.collector" Version="3.1.0" />
+    <PackageReference Include="NUnit" Version="3.13.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\CreateYourOwnAdventure.Api\CreateYourOwnAdventure.Api.csproj" />
     <ProjectReference Include="..\..\CreateYourOwnAdventure.Core\CreateYourOwnAdventure.Core.csproj" />
   </ItemGroup>
 

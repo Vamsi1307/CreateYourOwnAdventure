@@ -44,8 +44,7 @@ namespace CreateYourOwnAdventure.UnitTests.Services
             int id = 0;
 
             // Act
-            List<GameResponse>? result = await service.Get(
-                id);
+            GameTraverse? result = await service.Get(id);
 
             // Assert
             Assert.AreEqual(result, null);

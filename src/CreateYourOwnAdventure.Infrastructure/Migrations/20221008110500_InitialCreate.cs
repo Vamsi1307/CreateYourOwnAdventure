@@ -43,7 +43,7 @@ namespace CreateYourOwnAdventure.Infrastructure.Migrations
             migrationBuilder.InsertData(
                 table: "MyAdventures",
                 columns: new[] { "MyAdventureId", "BinaryTreeId", "Steps" },
-                values: new object[] { 1, 1, "[\"L\",\"L\",\"R\",\"L\"]" });            
+                values: new object[] { 1, 1, "[\"Y\",\"Y\",\"N\",\"Y\"]" });            
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

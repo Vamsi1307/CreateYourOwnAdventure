@@ -7,5 +7,5 @@ public interface IGameService
 {
 	public Task<int> Create(int adventureId, List<char> steps);
 	public Task<List<Game?>> Get();
-	public Task<List<GameResponse>> Get(int id);
+	public Task<GameTraverse> Get(int id);
 }

@@ -23,7 +23,7 @@ public class GameController : ControllerBase
 	{
 		try
 		{
-            List<GameResponse> results = await _gameService.Get(gameId);
+            var results = await _gameService.Get(gameId);
 
             return Ok(results);
         }

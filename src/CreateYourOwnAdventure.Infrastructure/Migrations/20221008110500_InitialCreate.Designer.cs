@@ -40,7 +40,7 @@ namespace CreateYourOwnAdventure.Infrastructure.Migrations
                         {
                             MyAdventureId = 1,
                             BinaryTreeId = 1,
-                            Steps = "[\"L\",\"L\",\"R\",\"L\"]"
+                            Steps = "[\"Y\",\"Y\",\"N\",\"Y\"]"
                         });
                 });
 
