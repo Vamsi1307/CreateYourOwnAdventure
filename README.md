@@ -1,10 +1,10 @@
 # CreateYourOwnAdventure
 CreateYourOwnAdventure repo is a solution which allows a player to choose their own
 adventure by picking from multiple choices in order to progress to the next set of choices,
-until they get to one of the endings. You should be able to persist the player’s choices and in
-the end, show the steps they took to get to the end of the game.
+until they get to one of the endings. The application is able to persist the player’s choices and in
+the end, shows the steps they took to get to the end of the game.
 
-This application is built using .Net 6 and SQLite 3.12.2
+This application is built using .Net 6 and SQLite
 
 # Prerequisite
 - Docker - https://docs.microsoft.com/en-us/virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-Server
@@ -89,7 +89,7 @@ This application is built using .Net 6 and SQLite 3.12.2
 
 # Frameworks:
 - Dotnet 6
-- SQLite 3.12.2
+- SQLite (EF Core Package Version - 6.0.2)
 - Docker 20.10.17
 
 # How to run the solution:
