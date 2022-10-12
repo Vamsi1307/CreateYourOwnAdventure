@@ -19,8 +19,8 @@ This application is built using .Net 6 and SQLite 3.12.2
 # Endpoints
 
 #Docker Endpoints:
-- CreateYourOwnAdventure Swagger Url: http://localhost:7088/index.html
-- CreateYourOwnAdventure Swagger Url: https://localhost:7089/index.html
+- Swagger Url: http://localhost:7088/index.html
+- Swagger Url: https://localhost:7089/index.html
 
 #Non-Docker Endpoints: 
 - Swagger Url: https://localhost:9876/index.html
