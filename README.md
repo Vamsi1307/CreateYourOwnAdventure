@@ -17,11 +17,13 @@ This application is built using .Net 6 and SQLite 3.12.2
 - Unit Tests
 
 # Endpoints
-#Non-Docker Endpoints:
-- Swagger: https://localhost:9876/index.html
+
 #Docker Endpoints:
-- CreateYourOwnAdventure API: http://localhost:7088/index.html
-- CreateYourOwnAdventure API: https://localhost:7089/index.html
+- CreateYourOwnAdventure Swagger Url: http://localhost:7088/index.html
+- CreateYourOwnAdventure Swagger Url: https://localhost:7089/index.html
+
+#Non-Docker Endpoints: 
+- Swagger Url: https://localhost:9876/index.html
 
 # Documentation
 - https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/docker/visual-studio-tools-for-docker?view=aspnetcore-6.0
@@ -29,8 +31,7 @@ This application is built using .Net 6 and SQLite 3.12.2
 # Frameworks:
 - Dotnet 6
 - SQLite 3.12.2
-- Docker
-
+- Docker 20.10.17
 
 # How to run the solution:
 - Clone the repo into a folder of your choice: git clone https://github.com/Vamsi1307/CreateYourOwnAdventure/
