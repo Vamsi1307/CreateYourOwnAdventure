@@ -2,12 +2,14 @@
 using CreateYourOwnAdventure.Core.Entities;
 using CreateYourOwnAdventure.Core.Interfaces;
 using CreateYourOwnAdventure.Core.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using NUnit.Framework;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using Assert = NUnit.Framework.Assert;
 
@@ -20,6 +22,7 @@ namespace CreateYourOwnAdventure.UnitTests.Controllers
         private Mock<IAdventureService> _mockAdventureService;
         private List<BinaryTree<Question>> _validAdventuresResponse;
         private BinaryTree<Question> _validAdventureResponse;
+        private CreateAdventureRequest _validCreateAdventureRequest;
         private int _validAdventureId;
 
         [TestInitialize]
@@ -34,7 +37,7 @@ namespace CreateYourOwnAdventure.UnitTests.Controllers
         public async Task GetAdventures_ValidResponse()
         {
             //Arrange            
-            _validAdventureResponse = BuildSampleAdventure();
+            _validAdventureResponse = BuildSampleAdventureResponse();
             _validAdventuresResponse = new List<BinaryTree<Question>>() { _validAdventureResponse };
             _mockAdventureService.Setup(x => x.Get()).ReturnsAsync(_validAdventuresResponse);
 
@@ -51,7 +54,7 @@ namespace CreateYourOwnAdventure.UnitTests.Controllers
         public async Task GetAdventureById_ValidResponse()
         {
             //Arrange
-            _validAdventureResponse = BuildSampleAdventure();
+            _validAdventureResponse = BuildSampleAdventureResponse();
             _mockAdventureService.Setup(x => x.Get(_validAdventureId)).ReturnsAsync(_validAdventureResponse);
 
             var systemUnderTest = new AdventureController(_mockLogger.Object, _mockAdventureService.Object);
@@ -63,7 +66,23 @@ namespace CreateYourOwnAdventure.UnitTests.Controllers
             Assert.That(adventure.Value, Is.EqualTo(_validAdventureResponse));
         }
 
-        private BinaryTree<Question> BuildSampleAdventure()
+        [TestMethod]
+        public async Task CreateNewAdventure_ValidResponse()
+        {
+            //Arrange
+            _validCreateAdventureRequest = BuildCreateAdventureRequest();
+            _mockAdventureService.Setup(x => x.Create(_validCreateAdventureRequest)).ReturnsAsync(_validAdventureId);
+
+            var systemUnderTest = new AdventureController(_mockLogger.Object, _mockAdventureService.Object);
+
+            //Act
+            var adventure = (OkResult) await systemUnderTest.Create(_validCreateAdventureRequest);
+
+            //Assert
+            Assert.That(adventure.StatusCode, Is.EqualTo(StatusCodes.Status200OK));
+        }
+
+        private BinaryTree<Question> BuildSampleAdventureResponse()
         {
             return new BinaryTree<Question>
             {
@@ -104,6 +123,16 @@ namespace CreateYourOwnAdventure.UnitTests.Controllers
                         Data = new Question("Maybe you want an apple?")
                     }
                 }
+            };
+        }
+
+        private CreateAdventureRequest BuildCreateAdventureRequest()
+        {
+            return new CreateAdventureRequest()
+            {
+                Question = "Do you want a Donut?",
+                Yes = null,
+                No = null
             };
         }
     }

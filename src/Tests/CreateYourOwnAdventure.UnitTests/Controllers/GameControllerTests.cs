@@ -2,6 +2,7 @@
 using CreateYourOwnAdventure.Core.Entities;
 using CreateYourOwnAdventure.Core.Interfaces;
 using CreateYourOwnAdventure.Core.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -22,14 +23,18 @@ namespace CreateYourOwnAdventure.UnitTests.Controllers
         private List<Game> _validGamesResponse;
         private GameTraverse _validGameTraverseResponse;
         private List<GameTraverse> _validGamesTraverseResponse;
+        private int _validAdventureId;
         private int _validGameId;
+        private List<char> _validSteps;
 
         [TestInitialize]
         public void TestInitialize()
         {
             _mockLogger = new Mock<ILogger<GameController>>();
             _mockGameService = new Mock<IGameService>();
+            _validAdventureId = 1;
             _validGameId = 1;
+            _validSteps = new List<char>() { 'Y', 'N' };
         }
 
         [TestMethod]
@@ -65,6 +70,21 @@ namespace CreateYourOwnAdventure.UnitTests.Controllers
             Assert.That(adventure.Value, Is.EqualTo(_validGameTraverseResponse));
         }
 
+        [TestMethod]
+        public async Task CreateNewGame_ValidResponse()
+        {
+            //Arrange
+            _mockGameService.Setup(x => x.Create(_validAdventureId, _validSteps)).ReturnsAsync(_validGameId);
+
+            var systemUnderTest = new GameController(_mockLogger.Object, _mockGameService.Object);
+
+            //Act
+            var gameResult = (OkResult)await systemUnderTest.Create(_validAdventureId, _validSteps);
+
+            //Assert
+            Assert.That(gameResult.StatusCode, Is.EqualTo(StatusCodes.Status200OK));
+        }
+
         private Game BuildGameResponse()
         {
             return new Game()
@@ -94,6 +114,6 @@ namespace CreateYourOwnAdventure.UnitTests.Controllers
                     }
                 }
             };
-        }
+        }        
     }
 }

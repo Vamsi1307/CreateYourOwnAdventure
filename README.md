@@ -22,11 +22,70 @@ This application is built using .Net 6 and SQLite 3.12.2
 - Swagger Url: http://localhost:7088/index.html
 - Swagger Url: https://localhost:7089/index.html
 
-#Non-Docker Endpoints: 
+#Local Swagger Endpoint: 
 - Swagger Url: https://localhost:9876/index.html
 
 # Documentation
 - https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/docker/visual-studio-tools-for-docker?view=aspnetcore-6.0
+
+#Sample Swagger Inputs for each API:
+
+#Create Adventure
+- {
+    "question": "Do I want a doughnut?",
+    "yes": {
+        "question": "Do I deserve it?",
+        "yes": {
+            "question": "Are you sure?",
+            "yes": {
+                "question": "Get it.",
+                "yes": null,
+                "no": null
+              },
+            "no": {
+                "question": "Do jumping jacks first",
+                "yes": null,
+                "no": null
+              }
+          },
+        "no": {
+            "question": "Is it a good doughnut?",
+            "yes": {
+                "question": "What are you waiting for? Grab it now.",
+                "yes": null,
+                "no": null
+              },
+            "no": {
+                "question": "Wait till you find a sinful, unforgettable doughnut",
+                "yes": null,
+                "no": null
+              }
+          }
+    },
+    "no": {
+        "question": "May be you want an apple?",
+        "yes": null,
+        "no": null
+    }
+}
+
+#Get Adventures
+- No parameters required
+
+#Get Adventure by AdventureId
+- Input adventureId as 1
+
+#Create Game
+- [
+   "Y", "N", "Y"
+  ]
+
+#Get Games
+- No parameters required
+
+#Get Game by GameId
+- Input gameId as 1
+
 
 # Frameworks:
 - Dotnet 6

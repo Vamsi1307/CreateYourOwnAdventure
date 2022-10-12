@@ -57,7 +57,7 @@ public class GameController : ControllerBase
 		{
             int result = await _gameService.Create(adventureId, steps);
 
-            return result == 1 ? NoContent() : Problem();
+            return result == 1 ? Ok() : Problem();
         }
 		catch (Exception ex)
 		{
